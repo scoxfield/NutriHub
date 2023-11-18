@@ -2,9 +2,10 @@ import React from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
 import {all} from "axios";
 
-function ThirdScreen() {
+const Third = () => {
     return (
         <View style={styles.container}>
+
             <Text>This is the Third Screen</Text>
             <Button title={'ADD'}
                     onPress={() =>
@@ -24,4 +25,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ThirdScreen;
+export default Third;
