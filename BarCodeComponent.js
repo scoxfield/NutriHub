@@ -2,8 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import axios from 'axios';
+import { useBarcodeContext } from './BarcodeContext';
+import { storeData, getData } from './Storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import asyncStorage from "@react-native-async-storage/async-storage/src/AsyncStorage";
 
 export default function BarCodeComponent() {
+    const { updateBarcodeData, updateProteinData, proteinData } = useBarcodeContext();
     const [hasPermission, setHasPermission] = useState(null);
     const [scanned, setScanned] = useState(false);
 
