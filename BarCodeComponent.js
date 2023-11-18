@@ -7,35 +7,52 @@ export default function BarCodeComponent() {
     const [hasPermission, setHasPermission] = useState(null);
     const [scanned, setScanned] = useState(false);
 
+    //Not like this
+    const [calories, setCalories] = useState(null);
+    //
+
     useEffect(() => {
         const getBarCodeScannerPermissions = async () => {
             const { status } = await BarCodeScanner.requestPermissionsAsync();
             setHasPermission(status === 'granted');
         };
+        //Not like this
+        const fetchCalories = async () => {
+                const caloriesData = await getData('Calories');
+            setCalories(caloriesData);
+            //
+        };
 
+        fetchCalories();
         getBarCodeScannerPermissions();
     }, []);
-
-    const formatObjects = (value) =>{
-        let object ={
-            "name": value["data"]["product"]["jbjhkj"]
-        };
-    }
 
     const handleBarCodeScanned = async ({ type, data }) => {
         setScanned(true);
         try {
             const response = await axios.get(`https://world.openfoodfacts.net/api/v2/product/${data}`);
-            const product = response.data.product;
-            response.data["dsfd"]
-            response.data["dsfdhfhf"]
+            const scannedProduct = response.data;
             if (response.data.status === 1) {
-                alert(`Product Name: ${response.data.product.product_name}`);
+                alert(`Product Name: ${scannedProduct.product.nutriments.energy}`);
+                //Get the data from the barcode
+                updateBarcodeData(response.data);
+
+                //Get the protein data and adds it to the current protein.
+                updateProteinData(parseInt(JSON.stringify(scannedProduct.product.nutriments.proteins))+proteinData);
+
+
+                const energyString = JSON.stringify(scannedProduct.product.nutriments.energy, null, 2);
+                const energyObject = JSON.parse(energyString);
+                const energyInteger = parseInt(energyObject);
+                const storedcaloriesInteger = parseInt(calories)
+                storeData('Calories',JSON.stringify(energyInteger+storedcaloriesInteger));
+                storeData('Proteins',JSON.stringify(parseInt(JSON.stringify(scannedProduct.product.nutriments.proteins))+proteinData))
+
             } else {
                 alert('Product not found');
             }
         } catch (error) {
-            alert('Error fetching product information');
+            alert(`Error fetching product information ${error}`);
         }
     };
 

@@ -1,12 +1,17 @@
-
-
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {View, Text, StyleSheet, Button} from 'react-native';
+import {all} from "axios";
 
 function ThirdScreen() {
     return (
         <View style={styles.container}>
             <Text>This is the Third Screen</Text>
+            <Button title={'ADD'}
+                    onPress={() =>
+                    {
+                        alert('Merge?');
+                    }
+            }/>
         </View>
     );
 }

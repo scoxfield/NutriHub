@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -10,30 +10,16 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" options={{ headerShown: false}} component={HomeScreen} />
-          <Stack.Screen name="SecondScreen" options={{ headerShown: false}} component={SecondScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-  );
-}
-
-function HomeScreen({ navigation }) {
-  return (
-      <View style={styles.container}>
-        <View style={styles.buttonContainer}>
-          <Button
-              title="Go to Second Screen"
-              onPress={() => navigation.navigate('SecondScreen')}
-          />
-            <Button
-                title="Go to Third Screen"
-                onPress={() => navigation.navigate('ThirdScreen')}
-            />
-        </View>
-        <StatusBar style="auto" />
-      </View>
+      <BarcodeProvider>
+          <NavigationContainer>
+                <Stack.Navigator initialRouteName="ACASA">
+                <Stack.Screen name="Second" options={{ headerShown: false}} component={Second} />
+                <Stack.Screen name="BarcodeScanPage" options={{ headerShown: false}} component={BarCodeComponent} />
+                <Stack.Screen name="Home" options={{ headerShown: false}} component={Home} />
+                </Stack.Navigator>
+              <AppButtons></AppButtons>
+          </NavigationContainer>
+      </BarcodeProvider>
   );
 }
 
@@ -46,4 +32,9 @@ const styles = StyleSheet.create({
   buttonContainer: {
     marginTop: 20,
   },
+    text: {
+      fontSize:30,
+        color:'#FF8A00',
+
+    },
 });
