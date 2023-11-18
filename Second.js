@@ -1,10 +1,26 @@
-import React from 'react';
-import { View, Text, Button } from 'react-native';
-import BarCodeComponent from "./BarCodeComponent";
+import React, {useEffect, useState} from 'react';
+import {View, Text, Button, StyleSheet} from 'react-native';
+import { useBarcodeContext } from './BarcodeContext'; // Import the context
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {storeData} from "./Storage";
 
-const SecondScreen = () => {
+const Second = () => {
+    const [savedProteins, saveSavedProteins] = useState(null)
+    const fetchsavedProteins = async () => {
+        const savedProteins = await AsyncStorage.getItem('Proteins');
+        saveSavedProteins(savedProteins);
+    };
+    fetchsavedProteins();
+    const { barcodeData, proteinData, loadData, updateProteinData} = useBarcodeContext(); // Use the context
     return (
-            <BarCodeComponent/>
+        <View style={styles.container}>
+            <Text style={styles.text}>protein Data(Context): {proteinData}{'\n'}
+            proteinData(Async storage): {savedProteins}</Text>
+            <Button title={"Reset Protein Data"} onPress={ () =>{
+                storeData('Proteins', JSON.stringify(0));
+                updateProteinData(parseInt(0));
+            }}/>
+        </View>
     );
 };
 
@@ -25,4 +41,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default SecondScreen;
+export default Second;
