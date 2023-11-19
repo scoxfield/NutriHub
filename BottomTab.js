@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const BottomTab = () => {
@@ -11,17 +11,15 @@ const BottomTab = () => {
 
     return (
         <View style={styles.tabContainer}>
+
             <TouchableOpacity style={styles.tabButton} onPress={() => navigateToScreen('Home')}>
                 <Text style={styles.tabText}>Home</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.tabButton} onPress={() => navigateToScreen('Second')}>
-                <Text style={styles.tabText}>Proteins</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.tabButton} onPress={() => navigateToScreen('BarcodeScanPage')}>
+            <TouchableOpacity style={styles.tabButton} onPress={() => navigateToScreen('BarcodeScanStack')}>
                 <Text style={styles.tabText}>Scan</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.tabButton} onPress={() => navigateToScreen('Third')}>
-                <Text style={styles.tabText}>Third</Text>
+                <Text style={styles.tabText}>Account</Text>
             </TouchableOpacity>
         </View>
     );
@@ -34,7 +32,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-        backgroundColor: 'lightgray',
+        backgroundColor: '#FF8A00',
         height: 60,
     },
     tabButton: {
@@ -45,5 +43,12 @@ const styles = StyleSheet.create({
     tabText: {
         fontSize: 16,
         color: 'black',
+    },
+    Elipse: {
+        width: 500,
+        height: 500,
+        alignItems:'center',
+        justifyContent:'center'
+
     },
 });

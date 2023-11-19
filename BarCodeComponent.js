@@ -7,44 +7,33 @@ import { storeData, getData } from './Storage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import asyncStorage from "@react-native-async-storage/async-storage/src/AsyncStorage";
 
-export default function BarCodeComponent() {
-    const { updateBarcodeData, updateProteinData, proteinData } = useBarcodeContext();
+export default function BarCodeComponent({ navigation }) {
+    const { updateBarcodeData, updateProteinsData, proteinsData } = useBarcodeContext();
     const [hasPermission, setHasPermission] = useState(null);
     const [scanned, setScanned] = useState(false);
 
-    //Not like this
-    const [calories, setCalories] = useState(null);
-    //
 
     useEffect(() => {
         const getBarCodeScannerPermissions = async () => {
             const { status } = await BarCodeScanner.requestPermissionsAsync();
             setHasPermission(status === 'granted');
         };
-        //Not like this
-        const fetchCalories = async () => {
-                const caloriesData = await getData('Calories');
-            setCalories(caloriesData);
-            //
-        };
 
-        fetchCalories();
         getBarCodeScannerPermissions();
     }, []);
 
     const handleBarCodeScanned = async ({ type, data }) => {
         setScanned(true);
         try {
-            const response = await axios.get(`https://world.openfoodfacts.net/api/v2/product/${data}`);
+            //Uses the extracted data of the barcode to call the openfoodfacts api and get the product data
+            //?fields=product_name,product_quantity,quantity,nutriment,nutriments,image_url,name_en,nutrition_grades_tags,packaging,agribalyse,previous_data,expiration_date
+            const response = await axios.get(`https://world.openfoodfacts.net/api/v2/product/${data}?fields=product_name,product_quantity,quantity,nutriment,nutriments,image_url,name_en,nutrition_grades_tags,packaging,agribalyse,previous_data,expiration_date`);
             const scannedProduct = response.data;
             if (response.data.status === 1) {
                 alert(`Product Name: ${scannedProduct.product.nutriments.energy}`);
                 //Get the data from the barcode
-                updateBarcodeData(response.data);
-
-                //Get the protein data and adds it to the current protein.
-                updateProteinData(parseInt(JSON.stringify(scannedProduct.product.nutriments.proteins))+proteinData);
-
+                updateBarcodeData(scannedProduct);
+                navigation.navigate('Thirdx')
 
                 const energyString = JSON.stringify(scannedProduct.product.nutriments.energy, null, 2);
                 const energyObject = JSON.parse(energyString);

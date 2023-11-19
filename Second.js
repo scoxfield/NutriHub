@@ -5,20 +5,23 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {storeData} from "./Storage";
 
 const Second = () => {
+    //We need this just for the debugging to get the async value of savedProteins and display it
     const [savedProteins, saveSavedProteins] = useState(null)
     const fetchsavedProteins = async () => {
         const savedProteins = await AsyncStorage.getItem('Proteins');
         saveSavedProteins(savedProteins);
     };
+    //ZZZZ
     fetchsavedProteins();
-    const { barcodeData, proteinData, loadData, updateProteinData} = useBarcodeContext(); // Use the context
+    const { barcodeData, proteinsData, loadData, updateProteinsData} = useBarcodeContext(); // Use the context
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>protein Data(Context): {proteinData}{'\n'}
-            proteinData(Async storage): {savedProteins}</Text>
+            <Text style={styles.text}>protein Data(Context): {proteinsData}{'\n'}
+            proteinsData(Async storage): {savedProteins}{'\n'}
+                {/*{JSON.stringify(barcodeData)}*/}</Text>
             <Button title={"Reset Protein Data"} onPress={ () =>{
                 storeData('Proteins', JSON.stringify(0));
-                updateProteinData(parseInt(0));
+                updateProteinsData(parseFloat(0));
             }}/>
         </View>
     );

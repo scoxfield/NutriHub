@@ -12,20 +12,33 @@ import { BarcodeProvider } from './BarcodeContext';
 import { storeData, getData } from './Storage';
 import BottomTab from "./BottomTab";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import HiUser from "./HiUser";
+import {useFonts} from "expo-font";
 
 const Stack = createStackNavigator();
+
+
+const StackForScan = createStackNavigator();
+
+const ScanStack = () => <StackForScan.Navigator>
+    <Stack.Screen name="BarcodeScanPage" options={{ headerShown: false }} component={BarCodeComponent} />
+    <Stack.Screen name="Thirdx" options={{ headerShown: false }} component={Third} />
+</StackForScan.Navigator>
+
+
+
 
 export default function App() {
     return (
         <BarcodeProvider>
             <NavigationContainer>
                 <Stack.Navigator initialRouteName="Home">
+                    <Stack.Screen name="HiUser" options={{ headerShown: false }} component={HiUser} />
                     <Stack.Screen name="Second" options={{ headerShown: false }} component={Second} />
-                    <Stack.Screen name="BarcodeScanPage" options={{ headerShown: false }} component={BarCodeComponent} />
+                    <Stack.Screen name="BarcodeScanStack" options={{ headerShown: false }} component={ScanStack} />
                     <Stack.Screen name="Home" options={{ headerShown: false }} component={Home} />
                     <Stack.Screen name="Third" options={{ headerShown: false }} component={Third} />
                 </Stack.Navigator>
-                <AppButtons />
                 <BottomTab />
             </NavigationContainer>
         </BarcodeProvider>
@@ -46,15 +59,16 @@ const AppButtons = () => {
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-      backgroundColor:'wheat',
-  },
-  buttonContainer: {
-    marginTop: 20,
-  },
+    container: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor:'wheat',
+    },
+    buttonContainer: {
+        marginTop: 20,
+    },
     text: {
       fontSize:30,
         color:'#FF8A00',
