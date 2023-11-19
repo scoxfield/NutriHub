@@ -4,6 +4,7 @@ import { getData } from './Storage';
 import { storeData } from './Storage';
 import { useBarcodeContext } from './BarcodeContext';
 
+
 const CustomResetButton = ({ onPress }) => (
     <TouchableOpacity onPress={onPress} style={styles.resetButton}>
         <Text style={styles.buttonText}>Reset Values</Text>
@@ -28,7 +29,7 @@ const Home = () => {
     } = useBarcodeContext();
 
     const handleResetPress = () => {
-        storeData('Protein', JSON.stringify(0));
+        storeData('Proteins', JSON.stringify(0));
         updateProteinsData(parseFloat(0));
         storeData('Calories', JSON.stringify(0));
         updateCaloriesData(parseFloat(0));
@@ -91,6 +92,9 @@ const Home = () => {
 
     return (
         <View style={styles.container}>
+            <Image source={require('./assets/CarrotLogo.png')} style={styles.image} />
+            <Text>Today</Text>
+
             <Animated.Image
                 source={require('./assets/abstract-reddish-pink-blob-element-free-png.png')}
                 style={[styles.blob_1, { transform: [{ translateY: translateYBlob1 }] }]}
@@ -101,17 +105,16 @@ const Home = () => {
                 style={[styles.blob_2, { transform: [{ translateY: translateYBlob2 }] }]}
             />
 
-            <Image source={require('./assets/CarrotLogo.png')} style={styles.image} />
 
-            {/*<Text style={styles.Text}>
-                Calories: {caloriesData}
-                {'\n'}
+
+            <Text style={styles.Text}>
+                Calories: {caloriesData}{'\n'}
                 Proteins: {proteinsData} {'\n'}
                 Fats: {fatsData} {'\n'}
                 Carbs: {carbsData} {'\n'}
                 Sugars: {sugarsData} {'\n'}
                 Salts: {saltData}{'\n'}
-            </Text>*/}
+            </Text>
 
             <CustomResetButton onPress={handleResetPress} />
         </View>
@@ -131,19 +134,9 @@ const styles = StyleSheet.create({
         padding: 10,
         marginVertical: 10,
     },
-    /*Text: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'orange',
-        borderRadius: 100,
-        padding: 10,
-        marginVertical: 10,
-        height:300,
-        width:300,
-        fontSize:100,
-    },*/
+
     image: {
-        height: 120,
+        height: 150,
         width: 50,
     },
     blob_1: {

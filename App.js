@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button , Image} from 'react-native';
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import BarCodeComponent from './BarCodeComponent';
@@ -49,12 +49,7 @@ export default function App() {
 const AppButtons = () => {
     const navigation = useNavigation();
 
-    return (
-        <View style={styles.buttonContainer}>
-            <Button title={'Scan'} onPress={() => navigation.navigate('BarcodeScanPage')} />
-            <Button title={'Proteins'} onPress={() => navigation.navigate('Second')} />
-        </View>
-    );
+
 };
 
 
@@ -70,7 +65,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     text: {
-      fontSize:30,
+        fontSize:30,
         color:'#FF8A00',
 
     },

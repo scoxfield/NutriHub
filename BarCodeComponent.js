@@ -30,27 +30,26 @@ export default function BarCodeComponent({ navigation }) {
             const response = await axios.get(`https://world.openfoodfacts.net/api/v2/product/${data}?fields=product_name,product_quantity,quantity,nutriment,nutriments,image_url,name_en,nutrition_grades_tags,packaging,agribalyse,previous_data,expiration_date`);
             const scannedProduct = response.data;
             if (response.data.status === 1) {
-                alert(`Product Name: ${scannedProduct.product.nutriments.energy}`);
+
                 //Get the data from the barcode
                 updateBarcodeData(scannedProduct);
                 navigation.navigate('Thirdx')
 
-                const energyString = JSON.stringify(scannedProduct.product.nutriments.energy, null, 2);
-                const energyObject = JSON.parse(energyString);
-                const energyInteger = parseInt(energyObject);
-                const storedcaloriesInteger = parseInt(calories)
-                storeData('Calories',JSON.stringify(energyInteger+storedcaloriesInteger));
-                storeData('Proteins',JSON.stringify(parseInt(JSON.stringify(scannedProduct.product.nutriments.proteins))+proteinData))
-
             } else {
-                alert('Product not found');
+
+
+                navigation.navigate('Home');
+                {scanned && setScanned(false)}
             }
         } catch (error) {
-            alert(`Error fetching product information ${error}`);
+            alert("Product was not found");
+
+            navigation.navigate('Home');
+            {scanned && setScanned(false)}
         }
     };
 
-
+    //Request camera permision
     if (hasPermission === null) {
         return <Text>Requesting for camera permission</Text>;
     }
@@ -58,6 +57,7 @@ export default function BarCodeComponent({ navigation }) {
         return <Text>No access to camera</Text>;
     }
 
+    //Button in order to scan again after each scan just for the Debugging
     return (
         <View style={styles.container}>
             <BarCodeScanner
@@ -68,7 +68,7 @@ export default function BarCodeComponent({ navigation }) {
         </View>
     );
 }
-
+//Styling
 const styles = StyleSheet.create({
     container: {
         flex: 1,
