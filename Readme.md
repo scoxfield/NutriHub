@@ -1,13 +1,37 @@
-# NutriHub
+<h1 align="center">NutriHub</h1>
+
+<p align="center">
+NutriHub, is a nutrition app born from the collaborative efforts of a dynamic team at the Unihack 5th edition event. <br />
+Seamlessly integrating open-source APIs like BarCodeScanner and OpenFoodFacts  <br />
+  <br />
+  <br />
+ NutriHub allows users to effortlessly track crucial nutritional information, including calories, fats, sugar, and more. <br />
+ the team envisions an expanding feature set for NutriHub, with upcoming enhancements like :  <br />
+  -Pet Food Scan <br />
+  -User Login <br />
+  -and a host of other functionalities <br />
+  promising an even more comprehensive and user-friendly experience in the foreseeable future. <br />
+   <br />
+
+
+
+
+
+
+  
+  -------------------------------------------------------------------------------------------------------------------------------------------------- <br />
               
 
+<p align="center"> Initial Concept : 
+
+![726de88eff4fd09058bd8519e71edcb2](https://github.com/wildenza/NutriHub/assets/117548573/545c64bd-b75e-4645-a2a3-b7ad8dadaeb8)
 
 
-NutriHub, a cutting-edge nutrition app born from the collaborative efforts of a dynamic team at the Unihack 5th edition event, revolutionizes the way users manage their dietary intake. Seamlessly integrating open-source APIs like BarCodeScanner and OpenFoodFacts, NutriHub empowers users to effortlessly track crucial nutritional information, including calories, fats, sugar, and more. The app's intuitive interface not only simplifies data retrieval but also enhances user awareness of their dietary choices. Excitingly, the team envisions an expanding feature set for NutriHub, with upcoming enhancements like 
--Pet Food Scan, 
--User Login,
--and a host of other functionalities, promising an even more comprehensive and user-friendly experience in the foreseeable future.
 
 
-![ezgif com-video-to-gif](https://github.com/scoxfield/NutriHub/assets/117548573/27b748a8-cd78-44fd-8b5a-f0e6692dbe3f)
+
+
+
+
+
 
