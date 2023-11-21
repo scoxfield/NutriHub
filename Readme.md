@@ -3,6 +3,7 @@
 <p align="center">
 NutriHub, is a nutrition app born from the collaborative efforts of a dynamic team at the Unihack 5th edition event. <br />
 Seamlessly integrating open-source APIs like BarCodeScanner and OpenFoodFacts  <br />
+  It was created using React-Native & Expo GO  <br />
   <br />
   <br />
  NutriHub allows users to effortlessly track crucial nutritional information, including calories, fats, sugar, and more. <br />
