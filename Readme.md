@@ -1,4 +1,5 @@
-<h1 align="center">NutriHub</h1>
+
+![Group_112](https://github.com/wildenza/NutriHub/assets/117548573/9f97e300-1e35-418e-8295-eaa97da679ec)
 
 <p align="center">
 NutriHub, is a nutrition app born from the collaborative efforts of a dynamic team at the Unihack 5th edition event. <br />
