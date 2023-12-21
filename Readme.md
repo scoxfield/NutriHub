@@ -17,16 +17,21 @@ Seamlessly integrating open-source APIs like BarCodeScanner and OpenFoodFacts  <
 
 
 
+[![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-000.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
+
+
 
 
 
   
-  ---------------------------------------------------------------------------------------------------------------------------------- <br />
+  -------------------------------------------------------------------------------------------------------------------------------------------- <br />
               
 
-<p align="center"> Initial Concept : 
+<p align="center">
+  <img src="https://github.com/wildenza/NutriHub/assets/117548573/098ba897-3eda-48f6-ba1a-186ef1ea451a" alt="Animated Gif">
+</p>
 
-![726de88eff4fd09058bd8519e71edcb2](https://github.com/wildenza/NutriHub/assets/117548573/545c64bd-b75e-4645-a2a3-b7ad8dadaeb8)
+
 
 
 
