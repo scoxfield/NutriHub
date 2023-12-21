@@ -93,7 +93,7 @@ const Home = () => {
     return (
         <View style={styles.container}>
             <Image source={require('./assets/CarrotLogo.png')} style={styles.image} />
-            <Text>Today</Text>
+            <Text style={styles.todayText}>Today</Text>
 
             <Animated.Image
                 source={require('./assets/abstract-reddish-pink-blob-element-free-png.png')}
@@ -107,7 +107,7 @@ const Home = () => {
 
 
 
-            <Text style={styles.Text}>
+            <Text style={styles.nutritionalData}>
                 Calories: {caloriesData}{'\n'}
                 Proteins: {proteinsData} {'\n'}
                 Fats: {fatsData} {'\n'}
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
         padding: 10,
         marginVertical: 10,
     },
-
+    // Updated styles for the text and image
     image: {
         height: 150,
         width: 50,
@@ -145,7 +145,6 @@ const styles = StyleSheet.create({
         left: 200,
         height: 500,
         width: 500,
-
     },
     blob_2: {
         position: 'absolute',
@@ -158,6 +157,19 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'center',
     },
+
+    todayText: {
+        fontSize: 40,
+        fontWeight: 'bold',
+        marginBottom: 20,
+    },
+    nutritionalData: {
+        fontSize: 26,
+
+        textAlign: 'center',
+        lineHeight: 30,
+    },
 });
+
 
 export default Home;
