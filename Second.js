@@ -12,7 +12,7 @@ const Second = () => {
                 {'\n'}
                 {'\n'}
                 {'\n'}
-                Your total <Text style={{ color: 'green' }}>calories</Text> for today are {' '}
+                Your total goal <Text style={{ color: 'green' }}>calories</Text> for today are {' '}
                 <Text style={{ color: 'orange' }}>2538</Text>
             </Text>
         </View>
